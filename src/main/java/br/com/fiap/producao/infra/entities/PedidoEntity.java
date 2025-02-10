@@ -10,6 +10,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -33,6 +35,11 @@ public class PedidoEntity {
     @Column(name = "cliente")
     private String cliente;
 
+    @JoinTable(
+        name = "pedido_itens",
+        joinColumns = @JoinColumn(name = "pedido_id"),
+        inverseJoinColumns = @JoinColumn(name = "item_pedido_id")
+    )
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItemPedidoEntity> itens;
 

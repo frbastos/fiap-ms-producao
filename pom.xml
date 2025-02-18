@@ -137,6 +137,11 @@
 			<version>1.9.3</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+			<version>4.2.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -170,47 +175,47 @@
 
 	<profiles>
 		<profile>
-            <id>unit-test</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>3.1.2</version>
-                        <configuration>
-                            <excludes combine.self="override">
-                                <exclude>**/CucumberTest.java</exclude>
-                            </excludes>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
+			<id>unit-test</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>3.1.2</version>
+						<configuration>
+							<excludes combine.self="override">
+								<exclude>**/CucumberTest.java</exclude>
+							</excludes>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 		<profile>
-            <id>system-test</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>3.1.2</version>
-                        <configuration>
-                            <includes combine.self="override">
-                                <include>**/CucumberTest.java</include>
-                            </includes>
-                            <excludes combine.self="override">
-                            </excludes>
-                            <properties>
-                                <configurationParameters>
-                                    cucumber.junit-platform.naming-strategy=long
-                                </configurationParameters>
-                            </properties>
-                        </configuration>
-                    </plugin>
+			<id>system-test</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>3.1.2</version>
+						<configuration>
+							<includes combine.self="override">
+								<include>**/CucumberTest.java</include>
+							</includes>
+							<excludes combine.self="override">
+							</excludes>
+							<properties>
+								<configurationParameters>
+									cucumber.junit-platform.naming-strategy=long
+								</configurationParameters>
+							</properties>
+						</configuration>
+					</plugin>
 
-                </plugins>
-            </build>
-        </profile>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
 
 </project>

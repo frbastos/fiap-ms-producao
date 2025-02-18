@@ -1,0 +1,29 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "title": "Pedido Response",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "dataCriacao": {
+            "type": "string"
+        },
+        "numeroPedido": {
+            "type": "integer"
+        },
+        "cliente": {
+            "type": ["string", "null"]
+        },
+        "itens": {
+            "type": "array"
+        },
+        "status": {
+            "type": "string"
+        }
+    },
+    "required": [
+      "dataCriacao",
+      "numeroPedido",
+      "itens",
+      "status"
+    ]
+}

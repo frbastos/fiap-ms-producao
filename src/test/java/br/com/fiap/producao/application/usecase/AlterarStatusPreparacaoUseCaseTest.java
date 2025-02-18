@@ -51,7 +51,7 @@ class AlterarStatusPreparacaoUseCaseTest {
         usecase.alterar(pedido, novoStatus);
 
         verify(pedidoCozinhaGateway).atualizar(pedidoCaptor.capture());
-       
+
         Pedido pedidoCapturado = pedidoCaptor.getValue();
         assertEquals(pedidoCapturado.getStatus(), novoStatus);
 

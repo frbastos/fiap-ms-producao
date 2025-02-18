@@ -17,6 +17,7 @@ import org.mockito.MockitoAnnotations;
 
 import br.com.fiap.producao.domain.entities.Pedido;
 import br.com.fiap.producao.infra.entities.PedidoEntity;
+import br.com.fiap.producao.infra.feignclient.PedidoFeignClient;
 import br.com.fiap.producao.infra.mapper.PedidoMapperEntity;
 import br.com.fiap.producao.infra.repository.PedidoCozinhaRepository;
 import br.com.fiap.producao.shared.PedidoHelper;
@@ -28,12 +29,15 @@ public class PedidoCozinhaGatewayTest {
     @Mock
     private PedidoCozinhaRepository repository;
 
+    @Mock
+    private PedidoFeignClient pedidoFeignClient;
+
     private PedidoCozinhaGatewayImpl gateway;
 
     @BeforeEach
     void setUp() {
         autoCloseable = MockitoAnnotations.openMocks(this);
-        gateway = new PedidoCozinhaGatewayImpl(repository);
+        gateway = new PedidoCozinhaGatewayImpl(repository, pedidoFeignClient);
     }
 
     @AfterEach

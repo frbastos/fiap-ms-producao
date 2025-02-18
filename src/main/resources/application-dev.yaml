@@ -17,4 +17,8 @@ spring:
         format_sql: true
   flyway:
     locations: classpath:db/migration/h2
+
+pedidos:
+    service:
+        url: http://localhost:8080
     
